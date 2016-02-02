@@ -22,6 +22,11 @@ body
 a
   color: $blue_dark
 
+// Breakpoints
+$breakpoint-s: 400px
+$breakpoint-m: 800px
+$breakpoint-l: 1000px
+
 // Fonts Grid
 $base: 1
 $ratio: 1.2
@@ -53,7 +58,7 @@ h2
 p
   margin: $baseEm 0
 
-@media (min-width: 400px)
+@media (min-width: $breakpoint-s)
   html
     font-size: $basePx * $scale1
   h1
@@ -61,14 +66,10 @@ p
   h2
     font-size: $baseEm * $scale2
 
-@media (min-width: 800px)
+@media (min-width: $breakpoint-m)
   html
     font-size: $basePx * $scale2
   h1
     font-size: $baseEm * $scale4
   h2
     font-size: $baseEm * $scale3
-
-@media (min-width: 1000px)
-  html
-    font-size: $basePx * $scale3

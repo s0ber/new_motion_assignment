@@ -1,11 +1,11 @@
-import './SmallButton.sass'
+import './Button.sass'
 import React, {Component} from 'react'
 import ButtonLoader from '../ButtonLoader'
 import classNames from 'classnames'
 
-export default class SmallButton extends Component {
+export default class Button extends Component {
   render() {
-    const buttonClasses = classNames('SmallButton', this.props.className, {
+    const buttonClasses = classNames('Button', this.props.className, {
       'is-green': this.props.color == 'green',
       'is-red': this.props.color == 'red',
       'is-icon': !!this.props.icon,
@@ -20,14 +20,14 @@ export default class SmallButton extends Component {
     if (this.props.submit) {
       return (
         <button type='submit' disabled={this.props.isLoading} className={buttonClasses} onClick={isEnabled && this.props.onClick}>
-          <span className='SmallButton-wrap'>{text}</span>
+          <span className='Button-wrap'>{text}</span>
           {this.props.isLoading && <ButtonLoader />}
         </button>
       )
     } else {
       return (
         <div className={buttonClasses} onClick={isEnabled && this.props.onClick}>
-          <span className='SmallButton-wrap'>{text}</span>
+          <span className='Button-wrap'>{text}</span>
           {this.props.isLoading && <ButtonLoader />}
         </div>
       )
