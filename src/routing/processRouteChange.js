@@ -21,9 +21,9 @@ export function processRouteChange(next, action, getState, dispatch) {
 
     if (isLoggedIn) {
       if (currentRoute == routes.LOGIN) {
-        return dispatch(tinyActions.navigateTo(paths.ROOT_PATH()))
+        return dispatch(tinyActions.navigateTo(paths.HOME_PATH()))
       }
-    } else if (currentRoute !== routes.ROOT && currentRoute !== routes.LOGIN) {
+    } else if (currentRoute !== routes.HOME && currentRoute !== routes.LOGIN) {
       return dispatch(tinyActions.navigateTo(paths.LOGIN_PATH()))
     }
 

@@ -6,7 +6,7 @@ import Link from 'layouts/Link'
 import {paths} from 'routes'
 
 const pages = [
-  {id: 'root', title: 'Home page', path: paths.ROOT_PATH()},
+  {id: 'home', title: 'Home page', path: paths.HOME_PATH()},
   {id: 'examples', title: 'Examples page', path: paths.EXAMPLES_PATH()},
   {id: 'page1', title: 'Page 1', path: paths.PAGE_ONE_PATH()},
   {id: 'page2', title: 'Page 2', path: paths.PAGE_TWO_PATH()}

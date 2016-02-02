@@ -1,11 +1,11 @@
-import Root from './Root'
+import Home from './Home'
 import Examples from './Examples'
 import Login from './Login'
 import Page1 from './Page1'
 import Page2 from './Page2'
 
 export default {
-  Root,
+  Home,
   Examples,
   Login,
   Page1,

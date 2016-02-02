@@ -8,8 +8,8 @@ export default function(router) {
     let data
 
     switch (router.src) {
-      case routes.ROOT:
-        data = {pageId: 'root'}
+      case routes.HOME:
+        data = {pageId: 'home'}
         break
       case routes.PAGE_ONE:
         request = getPageOneData()
