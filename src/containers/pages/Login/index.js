@@ -4,7 +4,7 @@ import loginUser from 'actions/currentUser/loginUser'
 
 import Form from 'forms/Form'
 import TextBox from 'forms/TextBox'
-import SmallButton from 'layouts/SmallButton'
+import Button from 'layouts/Button'
 
 @reduxForm({
   form: 'login', fields: ['email', 'password', 'remember_me']
@@ -24,7 +24,7 @@ export default class extends Component {
           <TextBox password label='Password' {...password} />
         </Form.Fields>
         <Form.Actions>
-          <SmallButton submit isLoading={this.props.submitting} title='Log In' color='green' />
+          <Button submit isLoading={this.props.submitting} title='Log In' color='green' />
         </Form.Actions>
       </Form>
     )
