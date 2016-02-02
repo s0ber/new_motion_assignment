@@ -1,0 +1,24 @@
+@import '../imports.sass'
+
+.Textarea
+  +field_wrapper
+  textarea
+    display: block
+
+  textarea
+    +text_input
+    font-size: 12px
+    line-height: 20px
+    min-height: 100px
+    padding: 5px 9px
+    resize: vertical
+
+  .CodeMirror
+    height: auto
+    font-size: 11px
+    line-height: 18px
+    font-family: Monaco
+
+  .CodeMirror-wrap
+    border-radius: 3px
+    border: 1px solid $form_border_color
