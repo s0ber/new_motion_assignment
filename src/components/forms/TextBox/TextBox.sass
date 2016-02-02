@@ -1,0 +1,15 @@
+@import '../imports.sass'
+
+.TextBox
+  +field_wrapper
+  input[type="text"],
+  input[type="password"]
+    display: block
+
+  input
+    +text_input
+    height: 29px
+
+  &.is-listValue
+    input
+      height: 25px

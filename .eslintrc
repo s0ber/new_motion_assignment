@@ -1,0 +1,25 @@
+{
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true,
+    "jquery": true,
+    "node": true
+  },
+  "extends": "toptal",
+  "globals": {
+    "require": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/jsx-uses-react": 1,
+    "operator-linebreak": [2, "after"]
+  }
+}
