@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
+import Page from 'layouts/Page'
 
 export default class extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to the most awesome React App Template</h1>
+      <Page fixed>
+        <h1>Experience The&nbsp;New&nbsp;Motion</h1>
         <p>
-          It provides a lot of useful tools, which will allow you to create best applications.
+          Please login to start using an app.
         </p>
-      </div>
+      </Page>
     )
   }
 }

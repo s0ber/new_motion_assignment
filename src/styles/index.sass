@@ -1,4 +1,4 @@
-@import '~normalize.css'
+@import './reset.css'
 @import './imports.sass'
 @import './global.sass'
 
@@ -15,9 +15,60 @@ html, body
   max-height: 100%
 
 body
-  font-size: 14px
-  line-height: 25px
+  font-family: 'Helvetica Neue', serif
   background-size: 160px
+  color: #333
 
 a
   color: $blue_dark
+
+// Fonts Grid
+$base: 1
+$ratio: 1.2
+$basePx: $base * 16px
+$baseEm: $base * 1em
+
+$scale0: $base // 1
+$scale1: $scale0 * $ratio // 1.2
+$scale2: $scale1 * $ratio // 1.44
+$scale3: $scale2 * $ratio // 1.728
+$scale4: $scale3 * $ratio // 2.074
+$scale5: $scale4 * $ratio // 2.488
+$scale6: $scale5 * $ratio // 2.986
+
+html
+  font-size: $basePx * $scale0
+  line-height: $base * $scale2
+
+h1
+  font-size: $baseEm * $scale2
+  line-height: $base * $scale1
+  margin: ($baseEm / 3) 0
+
+h2
+  font-size: $baseEm * $scale1
+  line-height: $base * $scale1
+  margin: 0.3em 0
+
+p
+  margin: $baseEm 0
+
+@media (min-width: 400px)
+  html
+    font-size: $basePx * $scale1
+  h1
+    font-size: $baseEm * $scale3
+  h2
+    font-size: $baseEm * $scale2
+
+@media (min-width: 800px)
+  html
+    font-size: $basePx * $scale2
+  h1
+    font-size: $baseEm * $scale4
+  h2
+    font-size: $baseEm * $scale3
+
+@media (min-width: 1000px)
+  html
+    font-size: $basePx * $scale3

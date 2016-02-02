@@ -31,7 +31,7 @@ export default class extends Component {
     const isLoggedIn = this.props.currentUser && this.props.currentUser !== ANONYMOUS
 
     return (
-      <Layout>
+      <Layout fixed>
         <Layout.Header />
         <Layout.Body>
           <CurrentPage />
