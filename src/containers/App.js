@@ -32,7 +32,10 @@ export default class extends Component {
 
     return (
       <Layout>
-        <CurrentPage />
+        <Layout.Header />
+        <Layout.Body>
+          <CurrentPage />
+        </Layout.Body>
       </Layout>
     )
   }

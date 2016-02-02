@@ -10,3 +10,28 @@ export default class Layout extends Component {
     )
   }
 }
+
+Layout.Header = class extends Component {
+  render() {
+    return (
+      <div className='Layout-header'>
+        {this.props.children}
+        <div className='Layout-logo'>
+          <div className='Layout-logoLeft' />
+          <div className='Layout-logoCenter' />
+          <div className='Layout-logoRight' />
+        </div>
+      </div>
+    )
+  }
+}
+
+Layout.Body = class extends Component {
+  render() {
+    return (
+      <div className='Layout-body'>
+        {this.props.children}
+      </div>
+    )
+  }
+}

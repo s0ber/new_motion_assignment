@@ -1,8 +1,66 @@
 @import '~styles/imports.sass'
 
 .Layout
-  padding: 30px
 
-  h1
-    font-size: 20px
-    line-height: 30px
+.Layout-header
+  position: relative
+  height: 60px
+  border-top: 2px solid #02A4E2
+  border-bottom: 1px solid #e7e7e7
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05)
+
+.Layout-logo
+  position: absolute
+  left: 50%
+  top: 50%
+  margin-top: -6px
+  margin-left: -71px
+  width: 143px
+  height: 13px
+  overflow: hidden
+  transition: all .4s
+
+  &.is-collapsed
+    width: 12px
+    margin-left: -6px
+
+.Layout-logoLeft,
+.Layout-logoCenter,
+.Layout-logoRight
+  position: absolute
+  height: 13px
+  opacity: 1
+  transition: all .4s
+  background-size: 100%
+  background-color: #fff
+  background-repeat: no-repeat
+
+.Layout-logoLeft
+  top: 0
+  left: 0
+  width: 88px
+  background-image: url('./images/logo_left.png')
+
+  .Layout-logo.is-collapsed &
+    opacity: 0
+
+.Layout-logoCenter
+  top: 0
+  left: 88px
+  width: 12px
+  background-image: url('./images/logo_center.png')
+  z-index: 1
+
+  .Layout-logo.is-collapsed &
+    left: 0
+
+.Layout-logoRight
+  top: 0
+  right: 0
+  width: 43px
+  background-image: url('./images/logo_right.png')
+
+  .Layout-logo.is-collapsed &
+    opacity: 0
+
+.Layout-body
