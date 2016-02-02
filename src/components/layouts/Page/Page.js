@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export default class Page extends Component {
   render() {
     const pageClasses = classNames('Page', {
+      'is-home': this.props.pageId == 'home',
       'is-fixed': this.props.fixed,
       'has-background': this.props.photo,
       'is-amsterdam': this.props.photo == 'amsterdam'

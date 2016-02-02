@@ -17,7 +17,7 @@ Layout.Header = class extends Component {
     return (
       <div className='Layout-header'>
         {this.props.children}
-        <div className='Layout-logo'>
+        <div className={classNames('Layout-logo', {'is-collapsed': this.props.minimizeLogo})}>
           <div className='Layout-logoLeft' />
           <div className='Layout-logoCenter' />
           <div className='Layout-logoRight' />

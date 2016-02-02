@@ -26,10 +26,10 @@ export default class Button extends Component {
       )
     } else {
       return (
-        <div className={buttonClasses} onClick={isEnabled && this.props.onClick}>
+        <span className={buttonClasses} onClick={isEnabled && this.props.onClick}>
           <span className='Button-wrap'>{text}</span>
           {this.props.isLoading && <ButtonLoader />}
-        </div>
+        </span>
       )
     }
   }

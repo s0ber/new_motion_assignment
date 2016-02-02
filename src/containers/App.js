@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import Layout from 'layouts/Layout'
+import BackButton from 'layouts/BackButton'
+import Link from 'layouts/Link'
 
 import {paths} from 'routes'
 import CurrentPage from './CurrentPage'
@@ -25,10 +27,17 @@ export default class extends Component {
 
   render() {
     const isLoggedIn = this.props.currentUser && this.props.currentUser !== ANONYMOUS
+    const isHomePage = this.props.currentPageId == 'home'
 
     return (
       <Layout fixed>
-        <Layout.Header />
+        <Layout.Header minimizeLogo={!isHomePage}>
+          {!isHomePage &&
+            <Link path={paths.HOME_PATH()}>
+              <BackButton title='Home' />
+            </Link>
+          }
+        </Layout.Header>
         <Layout.Body>
           <CurrentPage />
         </Layout.Body>
