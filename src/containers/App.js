@@ -32,17 +32,7 @@ export default class extends Component {
 
     return (
       <Layout>
-        {(this.props.flashMessages.length > 0) && <FlashMessages messages={this.props.flashMessages} dispatch={this.props.dispatch} />}
-        <Menu selectedPageId={this.props.currentPageId} />
         <CurrentPage />
-        {isLoggedIn ?
-          <p>
-            You are logged in as <b>{this.props.currentUser.full_name}</b>, <span onClick={this.logoutUser}>logout</span>
-          </p> :
-          <p>
-            Please <Link path={paths.LOGIN_PATH()}>log in</Link> to access hidden pages.
-          </p>
-        }
       </Layout>
     )
   }
