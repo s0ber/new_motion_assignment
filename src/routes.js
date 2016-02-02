@@ -3,10 +3,7 @@ import createPathFn from 'utils/create_path_fn'
 
 const routes = {
   HOME: '/',
-  LOGIN: '/login',
-  PAGE_ONE: '/page_one',
-  PAGE_TWO: '/page_two',
-  EXAMPLES: '/examples'
+  LOGIN: '/login'
 }
 
 const routesList = Object.keys(routes).map((k) => routes[k])

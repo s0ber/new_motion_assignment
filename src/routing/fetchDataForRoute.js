@@ -1,6 +1,4 @@
 import {routes} from 'routes'
-import getPageOneData from './requests/getPageOneData'
-import getPageTwoData from './requests/getPageTwoData'
 
 export default function(router) {
   return new Promise((resolve, reject) => {
@@ -10,15 +8,6 @@ export default function(router) {
     switch (router.src) {
       case routes.HOME:
         data = {pageId: 'home'}
-        break
-      case routes.PAGE_ONE:
-        request = getPageOneData()
-        break
-      case routes.PAGE_TWO:
-        request = getPageTwoData()
-        break
-      case routes.EXAMPLES:
-        data = {pageId: 'examples'}
         break
       case routes.LOGIN:
         data = {pageId: 'login'}
