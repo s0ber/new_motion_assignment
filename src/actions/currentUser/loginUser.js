@@ -1,21 +1,19 @@
-import post from 'utils/req/post'
+import authorize from 'utils/req/authorize'
+import getCurrentUser from 'routing/requests/getCurrentUser'
+import setCurrentUser from 'actions/currentUser/setCurrentUser'
 
-import {LOGIN_USER} from 'actions'
 import {tinyActions} from 'redux-tiny-router'
 import {paths} from 'routes'
 
 export default function(loginData) {
   return (dispatch) => {
-    return post('/sessions', {user: loginData}, dispatch)
-      .then((res) => {
-        if (res.success) {
-          dispatch({
-            type: LOGIN_USER,
-            payload: res.user.user
-          })
-
-          dispatch(tinyActions.navigateTo(paths.POSITIONS_PATH()))
-        }
+    return (
+      authorize('/oauth2/access_token', loginData).then((res) => {
+        return getCurrentUser().then((user) => {
+          dispatch(setCurrentUser(user))
+          dispatch(tinyActions.navigateTo(paths.HOME_PATH()))
+        })
       })
+    )
   }
 }

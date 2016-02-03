@@ -6,9 +6,7 @@ import classNames from 'classnames'
 export default class Button extends Component {
   render() {
     const buttonClasses = classNames('Button', this.props.className, {
-      'is-green': this.props.color == 'green',
       'is-red': this.props.color == 'red',
-      'is-icon': !!this.props.icon,
       'is-disabled': this.props.isLoading || this.props.disabled,
       'is-loading': this.props.isLoading
     })
