@@ -12,3 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   reduxTinyRouter.init(store)
   render(<Root store={store}/>, document.getElementById('root'))
 })
+
+// A little hack, so we can dispatch actions from anywhere.
+// Access your store this way only when there is no other way to dispatch an action.
+export default store

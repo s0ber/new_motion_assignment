@@ -8,7 +8,7 @@ import TextBox from 'forms/TextBox'
 import Button from 'layouts/Button'
 
 @reduxForm({
-  form: 'login', fields: ['email', 'password', 'remember_me']
+  form: 'login', fields: ['username', 'password']
 })
 export default class extends Component {
   submit = (values) => {
@@ -16,13 +16,13 @@ export default class extends Component {
   }
 
   render() {
-    const {fields: {email, password, remember_me}} = this.props
+    const {fields: {username, password}} = this.props
 
     return (
       <Page fixed photo='amsterdam'>
         <Form onSubmit={this.props.handleSubmit(this.submit)}>
           <Form.Fields>
-            <TextBox required autoFocus label='Email' {...email} />
+            <TextBox autoFocus label='Email' {...username} />
             <TextBox password label='Password' {...password} />
           </Form.Fields>
           <Form.Actions centered>

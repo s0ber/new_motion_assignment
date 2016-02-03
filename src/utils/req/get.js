@@ -1,14 +1,20 @@
 import {ENDPOINT} from 'constants'
 import request from 'superagent'
+import getAccessToken from 'accessToken/get'
 
 export default function(path, query = {}) {
-  query = Object.assign({}, query, {format: 'json'})
-
   return new Promise((resolve, reject) => {
+    const accessToken = getAccessToken()
+
+    if (!accessToken) {
+      reject({status: 401})
+      return
+    }
+
     request
       .get(ENDPOINT + path)
+      .set('Authorization', `Bearer ${accessToken.access_token}`)
       .query(query)
-      .withCredentials()
       .end((err, res) => {
         if (err) {
           reject(err)

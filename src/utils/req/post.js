@@ -1,31 +1,25 @@
 import {ENDPOINT} from 'constants'
 import request from 'superagent'
-import Cookie from 'cookies-js'
-import showFlashMessage from 'actions/flashMessages/showFlashMessage'
+import getAccessToken from 'accessToken/get'
 
-export default function(path, data = {}, dispatch) {
-  data = Object.assign({}, data, {authenticity_token: Cookie.get('_csrf_token')})
-
+export default function(path, data = {}) {
   return new Promise((resolve, reject) => {
+    const accessToken = getAccessToken()
+
+    if (!accessToken) {
+      reject({status: 401})
+      return
+    }
+
     request
       .post(ENDPOINT + path)
+      .set('Authorization', `Bearer ${accessToken.access_token}`)
       .send(data)
-      .withCredentials()
       .end((err, res) => {
         if (err) {
-          if (res.status == 422) {
-            reject(res.body.errors, err)
-          } else {
-            reject(res.body, err)
-          }
+          reject(err)
         } else {
-          const response = res.body
-          resolve(response)
-
-          const notice = (response.meta && response.meta.notice) || response.notice
-          if (dispatch && notice) {
-            dispatch(showFlashMessage(notice))
-          }
+          resolve(response.body)
         }
       })
   })

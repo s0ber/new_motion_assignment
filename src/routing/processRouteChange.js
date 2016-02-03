@@ -28,7 +28,7 @@ export function processRouteChange(next, action, getState, dispatch) {
     }
 
     fetchDataForRoute(router).then((data) => {
-      if (!(action.option == 'popEvent')) {
+      if (action.option !== 'popEvent') {
         next(action)
       }
 

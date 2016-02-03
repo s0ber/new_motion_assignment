@@ -28,11 +28,12 @@ export default class extends Component {
   render() {
     const isLoggedIn = this.props.currentUser && this.props.currentUser !== ANONYMOUS
     const isHomePage = this.props.currentPageId == 'home'
+    const isLoading = this.props.currentPageId == null
 
     return (
       <Layout fixed>
-        <Layout.Header minimizeLogo={!isHomePage}>
-          {!isHomePage &&
+        <Layout.Header minimizeLogo={!isLoading && !isHomePage}>
+          {!isLoading && !isHomePage &&
             <Link path={paths.HOME_PATH()}>
               <BackButton title='Home' />
             </Link>

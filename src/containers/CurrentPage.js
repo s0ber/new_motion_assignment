@@ -15,7 +15,7 @@ export default class extends Component {
   render() {
     if (this.props.currentPageId) {
       const Page = Pages[toComponentName(this.props.currentPageId)]
-      return (<Page />)
+      return (<Page currentUser={this.props.currentUser} dispatch={this.props.dispatch} />)
     } else {
       return (<PageLoader />)
     }
