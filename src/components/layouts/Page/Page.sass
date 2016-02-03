@@ -1,0 +1,63 @@
+@import '~styles/imports.sass'
+
+.Page
+  position: relative
+  background-color: #fff
+
+  &.is-fixed
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+    .Page-inner
+      margin-top: -3.5em
+
+  &.has-background
+    background-size: cover
+    background-position: 50% 50%
+
+    &:before
+      display: none
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background: rgba(0, 0, 0, .4)
+
+  &.is-home
+    text-align: center
+    color: #fff
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .5)
+
+    &:before
+      display: block
+
+    &.is-amsterdam
+      background-image: url('./images/amsterdam.jpg')
+
+    .Page-inner
+      background-color: transparent
+
+.Page-inner
+  position: relative
+  padding: 1rem
+  width: 100%
+  background-color: #fff
+
++screen-m
+  .Page.has-background
+    &:before
+      display: block
+
+    &.is-amsterdam
+      background-image: url('./images/amsterdam.jpg')
+
+  .Page-inner
+    max-width: 500px
+    border-radius: 3px
+
+  &.is-home .Page-inner
+    max-width: none

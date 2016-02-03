@@ -13,7 +13,7 @@ export default class TextBox extends Component {
     return (
       <div className={textBoxClasses}>
         {this.props.label && <Label required={required} {...other} />}
-        {this.props.password ? <input type='password' {...other} /> :
+        {this.props.password ? <input autoFocus={this.props.autoFocus} type='password' {...other} /> :
                                <input type='text' {...other} />}
 
         {this.props.hint && <Hint text={this.props.hint} />}
