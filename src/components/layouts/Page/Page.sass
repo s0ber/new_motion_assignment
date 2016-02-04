@@ -41,6 +41,13 @@
     .Page-inner
       background-color: transparent
 
+  &.is-map
+    .Page-inner
+      width: 100%
+      height: 100%
+      margin-top: 0
+      padding: 0
+
 .Page-inner
   position: relative
   padding: 1rem
@@ -59,5 +66,6 @@
     max-width: 500px
     border-radius: 3px
 
-  &.is-home .Page-inner
+  &.is-home .Page-inner,
+  &.is-map .Page-inner
     max-width: none

@@ -32,7 +32,7 @@ export function processRouteChange(next, action, getState, dispatch) {
         next(action)
       }
 
-      processCurrentRoute(router, data, dispatch)
+      processCurrentRoute(router, data, dispatch, getState())
     })
   })
 }

@@ -21,7 +21,7 @@ export default class extends Component {
     if (isLoggedIn) {
       return (
         <Page fixed pageId='home' photo='amsterdam'>
-          <h1>{`Welcome, ${currentUser.firstName} ${currentUser.lastName}`}</h1>
+          <h1>Welcome, {currentUser.firstName}&nbsp;{currentUser.lastName}</h1>
           <Menu items={MENU_ITEMS} />
           <Button color='red' title='Log Out' onClick={this.logoutUser} />
         </Page>
