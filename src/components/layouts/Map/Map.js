@@ -1,22 +1,30 @@
 import './Map.sass'
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import Marker from 'layouts/Marker'
 
 import updateMap from 'actions/map/updateMap'
 
 export default class Map extends Component {
+  state = {
+    chargers: []
+  }
+
   componentDidMount() {
-    const {lat, lng, zoom} = this.props.map
+    const {lat, lng, zoom, chargers} = this.props.map
 
     this.map = new google.maps.Map(ReactDOM.findDOMNode(this), {
       zoom, center: {lat, lng}
     })
+    this.setState({chargers})
   }
 
-  componentDidUpdate() {
-    const {lat, lng, zoom} = this.props.map
+  componentWillReceiveProps(props) {
+    const {lat, lng, zoom, chargers} = props.map
+
     this.map.setCenter({lat, lng})
     this.map.setZoom(zoom)
+    this.setState({chargers})
   }
 
   componentWillUnmount() {
@@ -35,7 +43,13 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div className='Map'></div>
+      <div className='Map'>
+        {
+          this.state.chargers.map((charger, i) => {
+            return <Marker key={i} map={this.map} lat={charger.lat} lng={charger.lng} />
+          })
+        }
+      </div>
     )
   }
 }

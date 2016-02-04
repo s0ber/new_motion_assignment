@@ -1,5 +1,6 @@
 import scriptJs from 'scriptjs'
 import {GOOGLE_MAPS_API_PATH, DEFAULT_MAP_LOCATION} from 'constants'
+import getChargersData from './getChargersData'
 
 export default function() {
   return new Promise((resolve, reject) => {
@@ -8,7 +9,12 @@ export default function() {
       geocoder.geocode({address: DEFAULT_MAP_LOCATION}, (results, status) => {
         if (status == 'OK') {
           const latLng = results[0].geometry.location
-          resolve({pageId: 'map', lat: latLng.lat(), lng: latLng.lng()})
+          resolve({
+            pageId: 'map',
+            lat: latLng.lat(),
+            lng: latLng.lng(),
+            chargers: getChargersData()
+          })
         }
       })
     })

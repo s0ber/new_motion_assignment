@@ -6,6 +6,7 @@ export default keyMirror({
 
   SET_DEFAULT_LAT_LNG: null,
   UPDATE_MAP: null,
+  SET_CHARGERS: null,
 
   CHANGE_PAGE_ID: null
 })

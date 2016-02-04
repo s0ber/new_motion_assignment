@@ -28,7 +28,7 @@ export default class extends Component {
     this.props.dispatch(updateMap({
       lat: position.coords.latitude,
       lng: position.coords.longitude,
-      zoom: 14
+      zoom: 15
     }))
   }
 

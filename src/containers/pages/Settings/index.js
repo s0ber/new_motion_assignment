@@ -6,6 +6,7 @@ export default class extends Component {
     return (
       <Page fixed pageId='home' photo='amsterdam'>
         <h1>Settings</h1>
+        <p>Will be available soon...</p>
       </Page>
     )
   }
