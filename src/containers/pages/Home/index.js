@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import Page from 'layouts/Page'
 import Button from 'layouts/Button'
 import Link from 'layouts/Link'
+import Menu from 'layouts/Menu'
 
 import {ANONYMOUS} from 'constants'
 import {paths} from 'routes'
 import logoutUser from 'actions/currentUser/logoutUser'
+import {MENU_ITEMS} from 'constants'
 
 export default class extends Component {
   logoutUser = () => {
@@ -20,9 +22,7 @@ export default class extends Component {
       return (
         <Page fixed pageId='home' photo='amsterdam'>
           <h1>{`Welcome, ${currentUser.firstName} ${currentUser.lastName}`}</h1>
-          <p>
-            Please login to start using an app.
-          </p>
+          <Menu items={MENU_ITEMS} />
           <Button color='red' title='Log Out' onClick={this.logoutUser} />
         </Page>
       )

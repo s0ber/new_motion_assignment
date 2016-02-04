@@ -12,6 +12,12 @@ export default function(router) {
       case routes.LOGIN:
         data = {pageId: 'login'}
         break
+      case routes.MAP:
+        data = {pageId: 'map'}
+        break
+      case routes.SETTINGS:
+        data = {pageId: 'settings'}
+        break
       default:
         data = {pageId: null}
     }

@@ -8,6 +8,8 @@ export default function(router, data, dispatch) {
       break
     case routes.LOGIN:
       break
+    case routes.MAP:
+      break
   }
 
   dispatch(changePageId(data.pageId))
