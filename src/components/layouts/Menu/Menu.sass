@@ -1,0 +1,30 @@
+@import '~styles/imports.sass'
+
+.Menu
+  margin: 1rem 0
+
+.Menu-item
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin-top: .5rem
+  padding: .5rem 1rem
+  border: 1px solid $newMotionColor
+  border-radius: 3px
+  background: rgba(lighten($newMotionColor, 3%), .8)
+  color: #fff
+
+  &:first-child
+    margin-top: 0
+
+  &:hover
+    background: rgba($newMotionColor, .8)
+
+.Menu-itemIcon
+  width: 1rem
+  margin-right: 10px
+
++screen-s
+  .Menu
+    margin: 1rem auto
+    width: 18rem

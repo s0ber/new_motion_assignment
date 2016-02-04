@@ -1,4 +1,3 @@
-import get from 'utils/req/get'
 import removeAccessToken from 'accessToken/remove'
 import {LOGOUT_USER} from 'actions'
 

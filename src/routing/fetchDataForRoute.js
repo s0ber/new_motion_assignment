@@ -1,4 +1,5 @@
 import {routes} from 'routes'
+import getGoogleMap from 'routing/requests/getGoogleMap'
 
 export default function(router) {
   return new Promise((resolve, reject) => {
@@ -11,6 +12,12 @@ export default function(router) {
         break
       case routes.LOGIN:
         data = {pageId: 'login'}
+        break
+      case routes.MAP:
+        request = getGoogleMap()
+        break
+      case routes.SETTINGS:
+        data = {pageId: 'settings'}
         break
       default:
         data = {pageId: null}
