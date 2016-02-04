@@ -11,7 +11,7 @@ export default class Menu extends Component {
         {this.props.items.map((item, i) => {
           return (
             <Link className='Menu-item textShadow' key={i} path={item.path}>
-              <span>{item.title}</span>
+              <span><Icon className='Menu-itemIcon' fa={item.icon} /> <span>{item.title}</span></span>
               <Icon fa='chevron-right' />
             </Link>
           )
