@@ -1,4 +1,4 @@
-import getCurrentUser from './requests/getCurrentUser'
+import fetchCurrentUser from 'actions/currentUser/fetchCurrentUser'
 import setCurrentUser from 'actions/currentUser/setCurrentUser'
 
 export default function(state, dispatch) {
@@ -6,7 +6,7 @@ export default function(state, dispatch) {
     if (state.currentUser) {
       resolve()
     } else {
-      getCurrentUser().then((currentUser) => {
+      dispatch(fetchCurrentUser()).then((currentUser) => {
         dispatch(setCurrentUser(currentUser))
         resolve()
       })

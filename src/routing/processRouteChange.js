@@ -27,7 +27,7 @@ export function processRouteChange(next, action, getState, dispatch) {
       return dispatch(tinyActions.navigateTo(paths.LOGIN_PATH()))
     }
 
-    fetchDataForRoute(router).then((data) => {
+    fetchDataForRoute(router, dispatch).then((data) => {
       if (action.option !== 'popEvent') {
         next(action)
       }
