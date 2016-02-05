@@ -11,21 +11,19 @@ export default class Button extends Component {
       'is-loading': this.props.isLoading
     })
 
-    const text = this.props.icon ? <i className={classNames('fa', 'fa-' + this.props.icon)} />
-                                 : this.props.children || this.props.title
     const isEnabled = !this.props.disabled
 
     if (this.props.submit) {
       return (
         <button type='submit' disabled={this.props.isLoading} className={buttonClasses} onClick={isEnabled && this.props.onClick}>
-          <span className='Button-wrap'>{text}</span>
+          <span className='Button-wrap'>{this.props.children}</span>
           {this.props.isLoading && <ButtonLoader />}
         </button>
       )
     } else {
       return (
         <span className={buttonClasses} onClick={isEnabled && this.props.onClick}>
-          <span className='Button-wrap'>{text}</span>
+          <span className='Button-wrap'>{this.props.children}</span>
           {this.props.isLoading && <ButtonLoader />}
         </span>
       )

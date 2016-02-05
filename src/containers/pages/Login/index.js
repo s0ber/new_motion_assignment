@@ -26,7 +26,7 @@ export default class extends Component {
             <TextBox password label='Password' {...password} />
           </Form.Fields>
           <Form.Actions centered>
-            <Button submit isLoading={this.props.submitting} title='Log In' />
+            <Button submit isLoading={this.props.submitting}>Log In</Button>
           </Form.Actions>
         </Form>
       </Page>

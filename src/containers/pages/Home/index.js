@@ -23,7 +23,7 @@ export default class extends Component {
         <Page fixed pageId='home' photo='amsterdam'>
           <h1>Welcome, {currentUser.firstName}&nbsp;{currentUser.lastName}</h1>
           <Menu items={MENU_ITEMS} />
-          <Button color='red' title='Log Out' onClick={this.logoutUser} />
+          <Button color='red' onClick={this.logoutUser}>Log Out</Button>
         </Page>
       )
     } else {
@@ -34,7 +34,7 @@ export default class extends Component {
             Please login to start using an app.
           </p>
           <Link path={paths.LOGIN_PATH()}>
-            <Button title='Log In' />
+            <Button>Log In</Button>
           </Link>
         </Page>
       )
