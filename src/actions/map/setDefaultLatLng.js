@@ -1,4 +1,5 @@
-import {SET_DEFAULT_LAT_LNG} from 'actions'
+import actions from 'actions'
+const {SET_DEFAULT_LAT_LNG} = actions
 
 export default function(latLng) {
   return {

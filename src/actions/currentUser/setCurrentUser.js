@@ -1,4 +1,5 @@
-import {SET_CURRENT_USER} from 'actions'
+import actions from 'actions'
+const {SET_CURRENT_USER} = actions
 
 export default function(currentUser) {
   return {

@@ -1,5 +1,6 @@
 import removeAccessToken from 'accessToken/remove'
-import {LOGOUT_USER} from 'actions'
+import actions from 'actions'
+const {LOGOUT_USER} = actions
 
 export default function() {
   return (dispatch) => {

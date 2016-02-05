@@ -1,5 +1,7 @@
-import {LOGOUT_USER, SET_CURRENT_USER} from 'actions'
+import actions from 'actions'
 import {ANONYMOUS} from 'constants'
+
+const {LOGOUT_USER, SET_CURRENT_USER} = actions
 
 export default function(state = null, action = {}) {
   switch (action.type) {

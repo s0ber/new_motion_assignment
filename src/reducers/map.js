@@ -1,4 +1,5 @@
-import {SET_DEFAULT_LAT_LNG, UPDATE_MAP, SET_CHARGERS} from 'actions'
+import actions from 'actions'
+const {SET_DEFAULT_LAT_LNG, UPDATE_MAP, SET_CHARGERS} = actions
 
 export default function(state = {zoom: 12}, action) {
   switch (action.type) {
