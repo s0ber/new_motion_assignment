@@ -1,4 +1,5 @@
-import {SET_CHARGERS} from 'actions'
+import actions from 'actions'
+const {SET_CHARGERS} = actions
 
 export default function(chargersData) {
   return {

@@ -1,4 +1,5 @@
-import {CHANGE_PAGE_ID} from 'actions'
+import actions from 'actions'
+const {CHANGE_PAGE_ID} = actions
 
 const initialState = null
 
