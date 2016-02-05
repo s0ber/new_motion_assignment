@@ -1,7 +1,7 @@
 import {routes} from 'routes'
-import getGoogleMap from 'routing/requests/getGoogleMap'
+import fetchMapData from 'actions/pages/map/fetchData'
 
-export default function(router) {
+export default function(router, dispatch) {
   return new Promise((resolve, reject) => {
     let request
     let data
@@ -14,7 +14,7 @@ export default function(router) {
         data = {pageId: 'login'}
         break
       case routes.MAP:
-        request = getGoogleMap()
+        request = dispatch(fetchMapData())
         break
       case routes.SETTINGS:
         data = {pageId: 'settings'}
