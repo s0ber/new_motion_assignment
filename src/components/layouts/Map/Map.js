@@ -1,11 +1,16 @@
 import './Map.sass'
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import Marker from 'layouts/Marker'
 
 import updateMap from 'actions/map/updateMap'
 
 export default class Map extends Component {
+  static propTypes = {
+    map: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
   state = {
     chargers: []
   }

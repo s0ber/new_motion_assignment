@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {tinyActions} from 'redux-tiny-router'
 
 export default class Link extends Component {
@@ -7,7 +7,13 @@ export default class Link extends Component {
     this.context.store.dispatch(tinyActions.navigateTo(this.props.path, null))
   }
 
-  static contextTypes = {store: React.PropTypes.any}
+  static propTypes = {
+    path: PropTypes.string.isRequired
+  }
+
+  static contextTypes = {
+    store: React.PropTypes.any
+  }
 
   render() {
     const {path, ...rest} = this.props

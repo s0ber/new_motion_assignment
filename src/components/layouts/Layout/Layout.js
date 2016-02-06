@@ -1,5 +1,5 @@
 import './Layout.sass'
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import classNames from 'classnames'
 
 export default class Layout extends Component {
@@ -13,6 +13,12 @@ export default class Layout extends Component {
 }
 
 Layout.Header = class extends Component {
+  static propTypes = {
+    leftButton: PropTypes.node,
+    rightButton: PropTypes.node,
+    minimizeLogo: PropTypes.bool
+  }
+
   render() {
     return (
       <div className='Layout-header'>
