@@ -1,6 +1,5 @@
 window.__UNIVERSAL__ = false
 
-import 'babel-polyfill'
 import React from 'react'
 import {render} from 'react-dom'
 import Root from './containers/Root'
