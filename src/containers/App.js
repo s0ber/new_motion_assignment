@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
 import Layout from 'layouts/Layout'
@@ -14,12 +14,16 @@ import {ANONYMOUS} from 'constants'
 
 @connect((state) => {
   return {
-    currentPageId: state.currentPageId,
-    currentUser: state.currentUser,
-    map: state.map
+    map: state.map,
+    currentPageId: state.currentPageId
   }
 })
 export default class extends Component {
+  static propTypes = {
+    map: PropTypes.object.isRequired,
+    currentPageId: PropTypes.string
+  }
+
   logoutUser = () => {
     this.props.dispatch(logoutUser())
   }
@@ -37,9 +41,8 @@ export default class extends Component {
   }
 
   render() {
-    const isLoggedIn = this.props.currentUser && this.props.currentUser !== ANONYMOUS
-    const isHomePage = this.props.currentPageId == 'home'
     const isLoading = this.props.currentPageId == null
+    const isHomePage = this.props.currentPageId == 'home'
 
     return (
       <Layout fixed>

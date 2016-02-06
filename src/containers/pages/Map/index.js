@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Page from 'layouts/Page'
 import Map from 'layouts/Map'
 
@@ -10,6 +10,11 @@ import Map from 'layouts/Map'
   }
 })
 export default class extends Component {
+  static propTypes = {
+    map: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
   render() {
     return (
       <Page fixed pageId='map'>

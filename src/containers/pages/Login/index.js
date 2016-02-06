@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form'
 import loginUser from 'actions/currentUser/loginUser'
 
@@ -11,6 +11,16 @@ import Button from 'layouts/Button'
   form: 'login', fields: ['username', 'password']
 })
 export default class extends Component {
+  static propTypes = {
+    fields: PropTypes.shape({
+      username: PropTypes.object.isRequired,
+      password: PropTypes.object.isRequired
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
+  }
+
   submit = (values) => {
     return this.props.dispatch(loginUser(values))
   }

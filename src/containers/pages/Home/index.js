@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Page from 'layouts/Page'
 import Button from 'layouts/Button'
 import Link from 'layouts/Link'
@@ -10,15 +10,18 @@ import logoutUser from 'actions/currentUser/logoutUser'
 import {MENU_ITEMS} from 'constants'
 
 export default class extends Component {
+  static propTypes = {
+    currentUser: PropTypes.object.isRequired
+  }
+
   logoutUser = () => {
     this.props.dispatch(logoutUser())
   }
 
   render() {
     const currentUser = this.props.currentUser
-    const isLoggedIn = currentUser && currentUser !== ANONYMOUS
 
-    if (isLoggedIn) {
+    if (currentUser !== ANONYMOUS) {
       return (
         <Page fixed pageId='home' photo='amsterdam'>
           <h1>Welcome, {currentUser.firstName}&nbsp;{currentUser.lastName}</h1>

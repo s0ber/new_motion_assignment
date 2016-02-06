@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import toComponentName from 'utils/to_component_name'
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Pages from './pages'
 import PageLoader from 'layouts/PageLoader'
 
@@ -12,6 +12,12 @@ import PageLoader from 'layouts/PageLoader'
   }
 })
 export default class extends Component {
+  static propTypes = {
+    currentPageId: PropTypes.string,
+    dispatch: PropTypes.func.isRequired,
+    currentUser: PropTypes.object
+  }
+
   render() {
     if (this.props.currentPageId) {
       const Page = Pages[toComponentName(this.props.currentPageId)]
