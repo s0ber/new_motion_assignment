@@ -7,7 +7,7 @@ module.exports = function(config) {
     frameworks: ['mocha', 'sinon-chai'],
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      {pattern: 'src/**/*_test.js', watched: false}
+      {pattern: 'src/**/__tests__/*.js', watched: false}
     ],
     reporters: ['dots'],
     port: 9876,
