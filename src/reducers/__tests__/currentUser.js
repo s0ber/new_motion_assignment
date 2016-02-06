@@ -2,16 +2,12 @@ import currentUser from 'reducers/currentUser'
 import {ANONYMOUS} from 'constants'
 
 describe('currentUser reducer', () => {
-  let action
   let state
-
-  beforeEach(() => {
-    action = {type: 'RANDOM_ACTION'}
-  })
+  let action
 
   afterEach(() => {
-    action = null
     state = null
+    action = null
   })
 
   it('returns provided user on SET_CURRENT_USER action', () => {
@@ -27,6 +23,7 @@ describe('currentUser reducer', () => {
 
   it('returns default state on other actions', () => {
     state = {my: 'state'}
+    action = {type: 'RANDOM_ACTION'}
     expect(currentUser(state, action)).to.eq(state)
   })
 })

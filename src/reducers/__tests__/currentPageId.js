@@ -4,13 +4,9 @@ describe('currentPageId reducer', () => {
   let state
   let action
 
-  beforeEach(() => {
-    action = {type: 'RANDOM_ACTION'}
-  })
-
   afterEach(() => {
-    action = null
     state = null
+    action = null
   })
 
   it('returns new page id on CHANGE_PAGE_ID action', () => {
@@ -22,6 +18,7 @@ describe('currentPageId reducer', () => {
 
   it('returns the same state by default', () => {
     state = {my: 'state'}
+    action = {type: 'RANDOM_ACTION'}
     expect(currentPageId(state, action)).to.eq(state)
   })
 })
