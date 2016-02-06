@@ -8,6 +8,8 @@ export default function() {
     }).catch((err) => {
       if (err.status == 401) {
         return ANONYMOUS
+      } else {
+        throw err
       }
     })
   }

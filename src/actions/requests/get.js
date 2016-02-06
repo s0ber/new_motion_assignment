@@ -8,6 +8,7 @@ export default function(path, query = {}) {
       const accessToken = getAccessToken()
 
       if (!accessToken) {
+        dispatch(logoutUser())
         reject({status: 401})
         return
       }

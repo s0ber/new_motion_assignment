@@ -1,4 +1,3 @@
-import store from 'index'
 import removeAccessToken from './remove'
 import logoutUser from 'actions/currentUser/logoutUser'
 
