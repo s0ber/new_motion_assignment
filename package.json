@@ -66,6 +66,7 @@
     "redux-devtools": "^2.1.5",
     "redux-form": "^4.1.5",
     "redux-logger": "^2.5.0",
+    "redux-mock-store": "0.0.6",
     "redux-thunk": "^1.0.3",
     "redux-tiny-router": "^0.5.3",
     "rimraf": "^2.4.3",

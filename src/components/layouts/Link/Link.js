@@ -26,3 +26,20 @@ export default class Link extends Component {
     )
   }
 }
+
+// This is a wrapper above a Link component, which allows to specify custom context
+export class TestableLink extends Component {
+  static childContextTypes = {
+    store: React.PropTypes.any
+  }
+
+  getChildContext() {
+    return {store: this.props.store}
+  }
+
+  render() {
+    return (
+      <Link {...this.props} />
+    )
+  }
+}
