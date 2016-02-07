@@ -9,7 +9,7 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve('./dist'),
     filename: 'bundle.js',
     publicPath: 'http://localhost:4000/static/'
   },
@@ -21,7 +21,7 @@ module.exports = {
     ])
   ],
   resolve: {
-    root: path.join(__dirname, 'src'),
+    root: path.resolve('./src'),
     modulesDirectories: ['node_modules', 'components']
   },
   module: {
@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        include: path.resolve('./src')
       },
       {
         test: /\.css$/,
@@ -56,5 +56,8 @@ module.exports = {
   postcss: function() {
     const autoprefixer = require('autoprefixer')
     return [autoprefixer]
+  },
+  devServer: {
+    stats: 'errors-only'
   }
 }

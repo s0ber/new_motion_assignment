@@ -42,7 +42,7 @@
     "karma-chai": "^0.1.0",
     "karma-cli": "^0.1.0",
     "karma-mocha": "^0.2.0",
-    "karma-phantomjs2-launcher": "^0.3.2",
+    "karma-phantomjs-launcher": "1.0.0",
     "karma-sinon-chai": "^1.0.0",
     "karma-webpack": "^1.7.0",
     "keymirror": "^0.1.1",
@@ -56,9 +56,9 @@
     "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
+    "react-shallow-testutils": "1.0.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.0",
-    "react-shallow-testutils": "1.0.0",
     "redbox-react": "^1.0.1",
     "redux": "^3.2.1",
     "redux-devtools": "^2.1.5",
@@ -74,8 +74,8 @@
     "style-loader": "^0.13.0",
     "superagent": "^1.4.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.9.6",
-    "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.0.0"
+    "webpack": "^1.12.12",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.6.4"
   }
 }

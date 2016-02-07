@@ -1,26 +1,23 @@
 module.exports = function(config) {
   config.set({
     preprocessors: {
-      'src/**/*.js': ['webpack']
+      'tests/index.js': ['webpack']
     },
-    basePath: '',
     frameworks: ['mocha', 'sinon-chai'],
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      {pattern: 'src/**/__tests__/*.js', watched: false}
+      'tests/index.js'
     ],
     reporters: ['dots'],
     port: 9876,
     colors: true,
     autoWatch: true,
-    browsers: ['PhantomJS2'],
-    captureTimeout: 60000,
-    singleRun: false,
+    browsers: ['PhantomJS'],
     plugins: [
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-sinon-chai'),
-      require('karma-phantomjs2-launcher')
+      require('karma-phantomjs-launcher')
     ],
     webpack: require('./webpack.config.js'),
     webpackMiddleware: {
