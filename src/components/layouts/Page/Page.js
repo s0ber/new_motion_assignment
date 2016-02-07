@@ -6,7 +6,7 @@ export default class Page extends Component {
   static propTypes = {
     fixed: PropTypes.bool,
     photo: PropTypes.string,
-    pageId: PropTypes.string.isRequired
+    pageId: PropTypes.string
   }
 
   render() {

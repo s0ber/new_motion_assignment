@@ -3,12 +3,14 @@ import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import Marker from 'layouts/Marker'
 
-import updateMap from 'actions/map/updateMap'
-
 export default class Map extends Component {
+  static defaultProps = {
+    handleMapUpdate: null
+  }
+
   static propTypes = {
     map: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    handleMapUpdate: PropTypes.func
   }
 
   state = {
@@ -21,7 +23,10 @@ export default class Map extends Component {
     this.map = new google.maps.Map(ReactDOM.findDOMNode(this), {
       zoom, center: {lat, lng}
     })
-    this.setState({chargers})
+
+    if (chargers) {
+      this.setState({chargers})
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -29,7 +34,10 @@ export default class Map extends Component {
 
     this.map.setCenter({lat, lng})
     this.map.setZoom(zoom)
-    this.setState({chargers})
+
+    if (chargers) {
+      this.setState({chargers})
+    }
   }
 
   componentWillUnmount() {
@@ -38,12 +46,11 @@ export default class Map extends Component {
 
   updateMapSettings() {
     const center = this.map.getCenter()
-
-    this.props.dispatch(updateMap({
+    this.props.handleMapUpdate && this.props.handleMapUpdate({
       lat: center.lat(),
       lng: center.lng(),
       zoom: this.map.getZoom()
-    }))
+    })
   }
 
   render() {
