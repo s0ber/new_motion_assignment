@@ -1,25 +1,40 @@
-import * as TestUtils from 'react-shallow-testutils'
+import React from 'react'
+import {Simulate} from 'react-addons-test-utils'
 import renderer from 'utils/tests/renderer'
+import domRenderer from 'utils/tests/domRenderer'
 
 import Form from '../Form'
 
 describe('Form', () => {
   let component
-  const render = renderer(Form)
+  let render
 
   describe('rendering', () => {
-    it('renders form tag', () => {
-      component = render({onSubmit: sinon.spy()})
-      expect(TestUtils.findWithType(component, 'form')).not.to.be.null
+    beforeEach(() => {
+      render = renderer(Form)
+    })
+
+    it('renders a form', () => {
+      const handleSubmit = sinon.spy()
+      const component = render({onSubmit: handleSubmit})
+
+      expect(component).to.includeJSX(
+        <form className='Form' onSubmit={handleSubmit}></form>
+      )
     })
   })
 
   describe('events handling', () => {
-    it('handles submit with props.onSubmit function', () => {
-      const handleSubmit = sinon.spy()
-      component = render({onSubmit: handleSubmit})
+    beforeEach(() => {
+      render = domRenderer(Form)
+    })
 
-      expect(TestUtils.findWithType(component, 'form').props.onSubmit).to.eq(handleSubmit)
+    it('handles clicks with props.onSubmit', () => {
+      const handleSubmit = sinon.spy()
+      const component = render({onSubmit: handleSubmit})
+
+      Simulate.submit(component.node)
+      expect(handleSubmit).to.be.calledOnce
     })
   })
 })

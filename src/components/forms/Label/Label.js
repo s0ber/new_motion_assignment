@@ -13,13 +13,14 @@ export default class Label extends Component {
   }
 
   render() {
-    const Abbr = this.props.required && <abbr title='require'>*</abbr>
     const Error = this.props.touched && this.props.error && <InlineError text={this.props.error} />
 
     return (
       <label className={classNames('Label', {'is-required': this.props.required})}>
         {this.props.children}
-        <span className='Label-inner'>{Abbr} {this.props.label}</span>
+        {this.props.required ?
+          <span className='Label-inner'><abbr title='require'>*</abbr> {this.props.label}</span> :
+          <span className='Label-inner'>{this.props.label}</span> }
         {Error}
       </label>
     )
