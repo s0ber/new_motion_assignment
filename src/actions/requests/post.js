@@ -1,6 +1,7 @@
 import {ENDPOINT} from 'constants'
 import request from 'superagent'
 import getAccessToken from 'accessToken/get'
+import logoutUser from 'actions/currentUser/logoutUser'
 
 export default function(path, data = {}) {
   return (dispatch) => {

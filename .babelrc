@@ -3,6 +3,7 @@
   "env": {
     "development": {
       "plugins": [
+        ["rewire"],
         ["transform-decorators-legacy"],
         ["react-transform", {
           "transforms": [{

@@ -1,6 +1,12 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class Marker extends Component {
+  static propTypes = {
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+    map: PropTypes.object.isRequired
+  }
+
   componentDidMount() {
     const {map, lat, lng} = this.props
 

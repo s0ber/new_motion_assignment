@@ -1,23 +1,29 @@
 import {connect} from 'react-redux'
 import toComponentName from 'utils/to_component_name'
 
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Pages from './pages'
 import PageLoader from 'layouts/PageLoader'
 
-@connect((state) => {
+const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser,
     currentPageId: state.currentPageId
   }
-})
-export default class extends Component {
+}
+
+export class CurrentPage extends Component {
+  static propTypes = {
+    currentPageId: PropTypes.string,
+  }
+
   render() {
     if (this.props.currentPageId) {
       const Page = Pages[toComponentName(this.props.currentPageId)]
-      return (<Page currentUser={this.props.currentUser} dispatch={this.props.dispatch} />)
+      return (<Page />)
     } else {
       return (<PageLoader />)
     }
   }
 }
+
+export default connect(mapStateToProps)(CurrentPage)

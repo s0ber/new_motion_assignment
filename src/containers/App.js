@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
 import Layout from 'layouts/Layout'
@@ -9,27 +9,32 @@ import LocateMeButton from 'layouts/LocateMeButton'
 import {paths} from 'routes'
 import CurrentPage from './CurrentPage'
 import updateMap from 'actions/map/updateMap'
-import logoutUser from 'actions/currentUser/logoutUser'
 import {ANONYMOUS} from 'constants'
 
-@connect((state) => {
+const mapStateToProps = (state) => {
   return {
-    currentPageId: state.currentPageId,
-    currentUser: state.currentUser,
-    map: state.map
+    map: state.map,
+    currentPageId: state.currentPageId
   }
-})
-export default class extends Component {
-  logoutUser = () => {
-    this.props.dispatch(logoutUser())
-  }
+}
 
-  updateGeolocation = (position) => {
-    this.props.dispatch(updateMap({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-      zoom: 15
-    }))
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateGeolocation: (position) => {
+      dispatch(updateMap({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        zoom: 15
+      }))
+    }
+  }
+}
+
+export class App extends Component {
+  static propTypes = {
+    map: PropTypes.object,
+    currentPageId: PropTypes.string,
+    updateGeolocation: PropTypes.func
   }
 
   constructor(props) {
@@ -37,12 +42,11 @@ export default class extends Component {
   }
 
   render() {
-    const isLoggedIn = this.props.currentUser && this.props.currentUser !== ANONYMOUS
-    const isHomePage = this.props.currentPageId == 'home'
     const isLoading = this.props.currentPageId == null
+    const isHomePage = this.props.currentPageId == 'home'
 
     return (
-      <Layout fixed>
+      <Layout>
         <Layout.Header
           minimizeLogo={!isLoading && !isHomePage}
           leftButton={
@@ -53,7 +57,7 @@ export default class extends Component {
           }
           rightButton={
             this.props.currentPageId == 'map' &&
-              <LocateMeButton map={this.props.map} handleGeolocation={this.updateGeolocation} />
+              <LocateMeButton map={this.props.map} handleGeolocation={this.props.updateGeolocation} />
           } />
         <Layout.Body>
           <CurrentPage />
@@ -62,3 +66,5 @@ export default class extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

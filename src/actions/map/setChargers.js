@@ -4,6 +4,6 @@ const {SET_CHARGERS} = actions
 export default function(chargersData) {
   return {
     type: SET_CHARGERS,
-    payload: {chargers: chargersData}
+    payload: chargersData
   }
 }

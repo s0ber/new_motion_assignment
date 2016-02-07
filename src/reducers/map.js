@@ -8,7 +8,7 @@ export default function(state = {zoom: 12}, action) {
     case UPDATE_MAP:
       return Object.assign({}, state, action.payload)
     case SET_CHARGERS:
-      return Object.assign({}, state, action.payload)
+      return Object.assign({}, state, {chargers: action.payload})
     default:
       return state
   }

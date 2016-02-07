@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+
 import Page from 'layouts/Page'
 import Button from 'layouts/Button'
 import Link from 'layouts/Link'
@@ -9,21 +11,35 @@ import {paths} from 'routes'
 import logoutUser from 'actions/currentUser/logoutUser'
 import {MENU_ITEMS} from 'constants'
 
-export default class extends Component {
-  logoutUser = () => {
-    this.props.dispatch(logoutUser())
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => {
+      dispatch(logoutUser())
+    }
+  }
+}
+
+export class Home extends Component {
+  static propTypes = {
+    currentUser: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func
   }
 
   render() {
     const currentUser = this.props.currentUser
-    const isLoggedIn = currentUser && currentUser !== ANONYMOUS
 
-    if (isLoggedIn) {
+    if (currentUser !== ANONYMOUS) {
       return (
         <Page fixed pageId='home' photo='amsterdam'>
           <h1>Welcome, {currentUser.firstName}&nbsp;{currentUser.lastName}</h1>
           <Menu items={MENU_ITEMS} />
-          <Button color='red' onClick={this.logoutUser}>Log Out</Button>
+          <Button color='red' onClick={this.props.logoutUser}>Log Out</Button>
         </Page>
       )
     } else {
@@ -41,3 +57,5 @@ export default class extends Component {
     }
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

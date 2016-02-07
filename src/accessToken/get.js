@@ -13,7 +13,6 @@ export default function() {
   if (token.expireTime > Date.now()) {
     return token
   } else {
-    store.dispatch(logoutUser())
     return null
   }
 }

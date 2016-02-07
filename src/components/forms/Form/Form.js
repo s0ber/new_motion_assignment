@@ -1,7 +1,11 @@
 import './Form.sass'
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class Form extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  }
+
   render() {
     return (
       <form className='Form' onSubmit={this.props.onSubmit}>

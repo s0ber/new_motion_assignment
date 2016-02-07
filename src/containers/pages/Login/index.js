@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
 import {reduxForm} from 'redux-form'
 import loginUser from 'actions/currentUser/loginUser'
 
@@ -7,12 +8,26 @@ import Form from 'forms/Form'
 import TextBox from 'forms/TextBox'
 import Button from 'layouts/Button'
 
-@reduxForm({
+const formFields = {
   form: 'login', fields: ['username', 'password']
-})
-export default class extends Component {
-  submit = (values) => {
-    return this.props.dispatch(loginUser(values))
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    submit: props.handleSubmit((values) => {
+      return dispatch(loginUser(values))
+    })
+  }
+}
+
+export class Login extends Component {
+  static propTypes = {
+    fields: PropTypes.shape({
+      username: PropTypes.object.isRequired,
+      password: PropTypes.object.isRequired
+    }).isRequired,
+    submit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
   }
 
   render() {
@@ -20,7 +35,7 @@ export default class extends Component {
 
     return (
       <Page fixed photo='amsterdam'>
-        <Form onSubmit={this.props.handleSubmit(this.submit)}>
+        <Form onSubmit={this.props.submit}>
           <Form.Fields>
             <TextBox autoFocus label='Email' {...username} />
             <TextBox password label='Password' {...password} />
@@ -33,3 +48,5 @@ export default class extends Component {
     )
   }
 }
+
+export default reduxForm(formFields)(connect(null, mapDispatchToProps)(Login))
