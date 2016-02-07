@@ -1,4 +1,21 @@
-# React App Template
+# New Motion Assignment
+
+## Running the project
+
+Install dependencies and start the project.
+
+```
+npm install
+npm start
+```
+
+It will be available at [http://localhost:4000](http://localhost:4000).
+
+## Running tests
+
+```
+npm test
+```
 
 ## Technology Stack
 
