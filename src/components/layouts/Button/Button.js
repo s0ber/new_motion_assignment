@@ -4,6 +4,12 @@ import ButtonLoader from '../ButtonLoader'
 import classNames from 'classnames'
 
 export default class Button extends Component {
+  static defaultProps = {
+    onClick: null,
+    disabled: false,
+    isLoading: false
+  }
+
   static propTypes = {
     color: PropTypes.string,
     submit: PropTypes.bool,
@@ -19,18 +25,24 @@ export default class Button extends Component {
       'is-loading': this.props.isLoading
     })
 
-    const isEnabled = !this.props.disabled
+    const isDisabled = this.props.isLoading || this.props.disabled
 
     if (this.props.submit) {
       return (
-        <button type='submit' disabled={this.props.isLoading} className={buttonClasses} onClick={isEnabled && this.props.onClick}>
+        <button
+          type='submit'
+          disabled={isDisabled}
+          className={buttonClasses}
+          onClick={!isDisabled && this.props.onClick}>
           <span className='Button-wrap'>{this.props.children}</span>
           {this.props.isLoading && <ButtonLoader />}
         </button>
       )
     } else {
       return (
-        <span className={buttonClasses} onClick={isEnabled && this.props.onClick}>
+        <span
+          className={buttonClasses}
+          onClick={!isDisabled && this.props.onClick}>
           <span className='Button-wrap'>{this.props.children}</span>
           {this.props.isLoading && <ButtonLoader />}
         </span>
