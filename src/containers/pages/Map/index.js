@@ -1,31 +1,35 @@
 import {connect} from 'react-redux'
-
 import React, {Component, PropTypes} from 'react'
 import Page from 'layouts/Page'
-import Map from 'layouts/Map'
-
+import MapComponent from 'layouts/Map'
 import updateMap from 'actions/map/updateMap'
 
-@connect((state) => {
+const mapStateToProps = (state) => {
   return {
     map: state.map
   }
-})
-export default class extends Component {
-  static propTypes = {
-    map: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
-  }
+}
 
-  updateMap = (mapOptions) => {
-    this.props.dispatch(updateMap(mapOptions))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateMap: (mapOptions) => {
+      dispatch(updateMap(mapOptions))
+    }
+  }
+}
+
+export class Map extends Component {
+  static propTypes = {
+    map: PropTypes.object.isRequired
   }
 
   render() {
     return (
       <Page fixed pageId='map'>
-        <Map map={this.props.map} dispatch={this.props.dispatch} handleMapUpdate={this.updateMap} />
+        <MapComponent map={this.props.map} handleMapUpdate={this.props.updateMap} />
       </Page>
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map)

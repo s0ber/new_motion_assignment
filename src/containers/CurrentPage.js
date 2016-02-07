@@ -5,25 +5,25 @@ import React, {Component, PropTypes} from 'react'
 import Pages from './pages'
 import PageLoader from 'layouts/PageLoader'
 
-@connect((state) => {
+const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser,
     currentPageId: state.currentPageId
   }
-})
-export default class extends Component {
+}
+
+export class CurrentPage extends Component {
   static propTypes = {
     currentPageId: PropTypes.string,
-    dispatch: PropTypes.func.isRequired,
-    currentUser: PropTypes.object
   }
 
   render() {
     if (this.props.currentPageId) {
       const Page = Pages[toComponentName(this.props.currentPageId)]
-      return (<Page currentUser={this.props.currentUser} dispatch={this.props.dispatch} />)
+      return (<Page />)
     } else {
       return (<PageLoader />)
     }
   }
 }
+
+export default connect(mapStateToProps)(CurrentPage)

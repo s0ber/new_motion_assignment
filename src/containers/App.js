@@ -9,31 +9,32 @@ import LocateMeButton from 'layouts/LocateMeButton'
 import {paths} from 'routes'
 import CurrentPage from './CurrentPage'
 import updateMap from 'actions/map/updateMap'
-import logoutUser from 'actions/currentUser/logoutUser'
 import {ANONYMOUS} from 'constants'
 
-@connect((state) => {
+const mapStateToProps = (state) => {
   return {
     map: state.map,
     currentPageId: state.currentPageId
   }
-})
-export default class extends Component {
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateGeolocation: (position) => {
+      dispatch(updateMap({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        zoom: 15
+      }))
+    }
+  }
+}
+
+export class App extends Component {
   static propTypes = {
-    map: PropTypes.object.isRequired,
-    currentPageId: PropTypes.string
-  }
-
-  logoutUser = () => {
-    this.props.dispatch(logoutUser())
-  }
-
-  updateGeolocation = (position) => {
-    this.props.dispatch(updateMap({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-      zoom: 15
-    }))
+    map: PropTypes.object,
+    currentPageId: PropTypes.string,
+    updateGeolocation: PropTypes.func
   }
 
   constructor(props) {
@@ -45,7 +46,7 @@ export default class extends Component {
     const isHomePage = this.props.currentPageId == 'home'
 
     return (
-      <Layout fixed>
+      <Layout>
         <Layout.Header
           minimizeLogo={!isLoading && !isHomePage}
           leftButton={
@@ -56,7 +57,7 @@ export default class extends Component {
           }
           rightButton={
             this.props.currentPageId == 'map' &&
-              <LocateMeButton map={this.props.map} handleGeolocation={this.updateGeolocation} />
+              <LocateMeButton map={this.props.map} handleGeolocation={this.props.updateGeolocation} />
           } />
         <Layout.Body>
           <CurrentPage />
@@ -65,3 +66,5 @@ export default class extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
