@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {Simulate} from 'react-addons-test-utils'
-import renderer from 'utils/tests/renderer'
+import renderer from 'utils/test_helpers/renderer'
 
 import CurrentPageConnected, {CurrentPage} from '../CurrentPage'
 import PageLoader from 'layouts/PageLoader'

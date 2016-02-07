@@ -1,6 +1,6 @@
 import React from 'react'
 import * as TestUtils from 'react-shallow-testutils'
-import renderer from 'utils/tests/renderer'
+import renderer from 'utils/test_helpers/renderer'
 
 import InlineError from '../InlineError'
 

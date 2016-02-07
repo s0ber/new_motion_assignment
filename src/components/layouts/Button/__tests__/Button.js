@@ -1,7 +1,7 @@
 import React from 'react'
 import {Simulate} from 'react-addons-test-utils'
-import renderer from 'utils/tests/renderer'
-import domRenderer from 'utils/tests/domRenderer'
+import renderer from 'utils/test_helpers/renderer'
+import domRenderer from 'utils/test_helpers/domRenderer'
 
 import Button from '../Button'
 import ButtonLoader from 'layouts/ButtonLoader'

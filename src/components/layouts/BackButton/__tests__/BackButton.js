@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'utils/tests/renderer'
+import renderer from 'utils/test_helpers/renderer'
 
 import BackButton from '../BackButton'
 import Icon from 'icons/Icon'
