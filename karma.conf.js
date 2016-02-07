@@ -3,7 +3,7 @@ module.exports = function(config) {
     preprocessors: {
       'tests/index.js': ['webpack']
     },
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai', 'chai-equal-jsx'],
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
       'tests/index.js'
@@ -17,7 +17,8 @@ module.exports = function(config) {
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-sinon-chai'),
-      require('karma-phantomjs-launcher')
+      require('karma-phantomjs-launcher'),
+      require('karma-chai-equal-jsx')
     ],
     webpack: require('./webpack.config.js'),
     webpackMiddleware: {
