@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
-import {devTools} from 'redux-devtools'
 
 // Reducers
 import {tinyReducer} from 'redux-tiny-router'
@@ -17,7 +16,6 @@ const middlewares = [thunk, routingMiddleware, tinyMiddleware, createLogger()]
 
 const finalCreateStore = compose(
   applyMiddleware(...middlewares),
-  devTools()
 )(createStore)
 
 export default function(data, url) {
