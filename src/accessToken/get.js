@@ -2,7 +2,7 @@ import removeAccessToken from './remove'
 import logoutUser from 'actions/currentUser/logoutUser'
 
 export default function() {
-  let token = localStorage.getItem('tnm_access_token')
+  let token = localStorage.getItem('toptal_access_token')
 
   if (!token) {
     return null

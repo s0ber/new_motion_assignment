@@ -4,21 +4,18 @@ import Page from 'layouts/Page'
 import MapComponent from 'layouts/Map'
 import updateMap from 'actions/map/updateMap'
 
-const mapStateToProps = (state) => {
+@connect((state) => {
   return {
     map: state.map
   }
-}
-
-const mapDispatchToProps = (dispatch) => {
+}, (dispatch) => {
   return {
     updateMap: (mapOptions) => {
       dispatch(updateMap(mapOptions))
     }
   }
-}
-
-export class Map extends Component {
+})
+export default class Map extends Component {
   static propTypes = {
     map: PropTypes.object.isRequired
   }
@@ -31,5 +28,3 @@ export class Map extends Component {
     )
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map)

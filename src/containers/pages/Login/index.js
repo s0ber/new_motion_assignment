@@ -8,19 +8,17 @@ import Form from 'forms/Form'
 import TextBox from 'forms/TextBox'
 import Button from 'layouts/Button'
 
-const formFields = {
+@reduxForm({
   form: 'login', fields: ['username', 'password']
-}
-
-const mapDispatchToProps = (dispatch, props) => {
+})
+@connect(null, (dispatch, props) => {
   return {
     submit: props.handleSubmit((values) => {
       return dispatch(loginUser(values))
     })
   }
-}
-
-export class Login extends Component {
+})
+export default class Login extends Component {
   static propTypes = {
     fields: PropTypes.shape({
       username: PropTypes.object.isRequired,
@@ -48,5 +46,3 @@ export class Login extends Component {
     )
   }
 }
-
-export default reduxForm(formFields)(connect(null, mapDispatchToProps)(Login))

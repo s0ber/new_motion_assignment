@@ -3,7 +3,7 @@ import {Simulate} from 'react-addons-test-utils'
 import renderer from 'utils/test_helpers/renderer'
 import domRenderer from 'utils/test_helpers/domRenderer'
 
-import LoginConnected, {Login} from '../index'
+import Login from '../index'
 import Page from 'layouts/Page'
 import Form from 'forms/Form'
 
@@ -14,14 +14,14 @@ describe('Login', () => {
   const Button = (props) => { return <div></div> }
 
   before(() => {
-    render = domRenderer(Login)
-    LoginConnected.__Rewire__('TextBox', TextBox)
-    LoginConnected.__Rewire__('Button', Button)
+    render = domRenderer(Login.WrappedComponent)
+    Login.__Rewire__('TextBox', TextBox)
+    Login.__Rewire__('Button', Button)
   })
 
   after(() => {
-    LoginConnected.__ResetDependency__('TextBox')
-    LoginConnected.__ResetDependency__('Button')
+    Login.__ResetDependency__('TextBox')
+    Login.__ResetDependency__('Button')
   })
 
   it('renders a login form with submit handler', () => {

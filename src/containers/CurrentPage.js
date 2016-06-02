@@ -5,13 +5,12 @@ import React, {Component, PropTypes} from 'react'
 import Pages from './pages'
 import PageLoader from 'layouts/PageLoader'
 
-const mapStateToProps = (state) => {
+@connect((state) => {
   return {
     currentPageId: state.currentPageId
   }
-}
-
-export class CurrentPage extends Component {
+})
+export default class CurrentPage extends Component {
   static propTypes = {
     currentPageId: PropTypes.string,
   }
@@ -25,5 +24,3 @@ export class CurrentPage extends Component {
     }
   }
 }
-
-export default connect(mapStateToProps)(CurrentPage)

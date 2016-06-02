@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {Simulate} from 'react-addons-test-utils'
 import renderer from 'utils/test_helpers/renderer'
 
-import CurrentPageConnected, {CurrentPage} from '../CurrentPage'
+import CurrentPage from '../CurrentPage'
 import PageLoader from 'layouts/PageLoader'
 
 describe('CurrentPage', () => {
@@ -11,7 +11,7 @@ describe('CurrentPage', () => {
   let render
 
   before(() => {
-    render = renderer(CurrentPage)
+    render = renderer(CurrentPage.WrappedComponent)
   })
 
   context('current page is not yet specified', () => {
@@ -25,7 +25,7 @@ describe('CurrentPage', () => {
     it('renders associated page container', () => {
       const Home = class extends Component { render() { return(<div></div>) } }
       const Login = class extends Component { render() { return(<div></div>) } }
-      CurrentPageConnected.__Rewire__('Pages', {Home, Login})
+      CurrentPage.__Rewire__('Pages', {Home, Login})
 
       component = render({currentPageId: 'home'})
       expect(component).to.equalJSX(<Home />)
@@ -35,7 +35,7 @@ describe('CurrentPage', () => {
       expect(component).not.to.equalJSX(<Home />)
       expect(component).to.equalJSX(<Login />)
 
-      CurrentPageConnected.__ResetDependency__('Pages')
+      CurrentPage.__ResetDependency__('Pages')
     })
   })
 })

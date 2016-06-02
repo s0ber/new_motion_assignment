@@ -1,3 +1,3 @@
 export default function() {
-  localStorage.removeItem('tnm_access_token')
+  localStorage.removeItem('toptal_access_token')
 }

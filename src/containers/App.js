@@ -11,14 +11,12 @@ import CurrentPage from './CurrentPage'
 import updateMap from 'actions/map/updateMap'
 import {ANONYMOUS} from 'constants'
 
-const mapStateToProps = (state) => {
+@connect((state) => {
   return {
     map: state.map,
     currentPageId: state.currentPageId
   }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
+}, (dispatch, ownProps) => {
   return {
     updateGeolocation: (position) => {
       dispatch(updateMap({
@@ -28,9 +26,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }))
     }
   }
-}
-
-export class App extends Component {
+})
+export default class App extends Component {
   static propTypes = {
     map: PropTypes.object,
     currentPageId: PropTypes.string,
@@ -66,5 +63,3 @@ export class App extends Component {
     )
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)

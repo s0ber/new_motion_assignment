@@ -4,5 +4,5 @@ export default function(token) {
 
   token.expireTime = expireDate.getTime()
   token = JSON.stringify(token)
-  localStorage.setItem('tnm_access_token', token)
+  localStorage.setItem('toptal_access_token', token)
 }

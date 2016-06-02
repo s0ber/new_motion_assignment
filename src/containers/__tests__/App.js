@@ -3,7 +3,7 @@ import {Simulate} from 'react-addons-test-utils'
 import renderer from 'utils/test_helpers/renderer'
 import domRenderer from 'utils/test_helpers/domRenderer'
 
-import {App} from '../App'
+import App from '../App'
 import Link from 'layouts/Link'
 import Layout from 'layouts/Layout'
 import BackButton from 'layouts/BackButton'
@@ -16,7 +16,7 @@ describe('App', () => {
   let render
 
   before(() => {
-    render = renderer(App)
+    render = renderer(App.WrappedComponent)
   })
 
   context('current page is specified', () => {

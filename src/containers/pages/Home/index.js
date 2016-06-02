@@ -11,21 +11,18 @@ import {paths} from 'routes'
 import logoutUser from 'actions/currentUser/logoutUser'
 import {MENU_ITEMS} from 'constants'
 
-const mapStateToProps = (state) => {
+@connect((state) => {
   return {
     currentUser: state.currentUser
   }
-}
-
-const mapDispatchToProps = (dispatch) => {
+}, (dispatch) => {
   return {
     logoutUser: () => {
       dispatch(logoutUser())
     }
   }
-}
-
-export class Home extends Component {
+})
+export default class Home extends Component {
   static propTypes = {
     currentUser: PropTypes.object.isRequired,
     logoutUser: PropTypes.func
@@ -57,5 +54,3 @@ export class Home extends Component {
     }
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
