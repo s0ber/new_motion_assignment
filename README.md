@@ -11,6 +11,11 @@ npm start
 
 It will be available at [http://localhost:4000](http://localhost:4000).
 
+## Credentials for Login form
+
+Email: `programming-assignment@thenewmotion.com`
+Password: `Zea2E5RA`
+
 ## Running tests
 
 ```
