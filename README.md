@@ -1,5 +1,23 @@
 # New Motion Assignment
 
+## Brief Description
+This is an application, which was a part of my assignment to become a front-end developer of The New Motion company, which is located in Amsterdam.
+I've failed an interview process, they said to me, that I have pure design skills.
+Anyway, I think this small app will be enough to demonstrate my technical skills and how am I familiar with technologies.
+
+Initially there were requests to The New Motion test server, but I've mocked them.
+Also, I haven't used `enzyme` for testing react components, because I was not aware of that tool at the moment.
+Now I would prefer to use it.
+
+So, assignment sounded something like that:
+
+```
+You should create a prototype of mobile version of a site, which allows to login, when correct credentials are provided.
+You can get access token by submitting required credentials.
+When token is received, use it to get information about current user and render it on the page.
+Also, there should be a map with some markers (coordinates for those are just predefined).
+```
+
 ## Running the project
 
 Install dependencies and start the project.
